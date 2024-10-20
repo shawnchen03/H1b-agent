@@ -1,34 +1,26 @@
+'use client';
+
 import React from 'react';
-
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import ResumeUpload from '@/components/resume-upload';
 import GetStartedForm from '@/components/GetStartedForm';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronLeft } from "lucide-react";
-import Link from "next/link";
 
-export default function GetStartedPage() {
+const GetStartedPage = () => {
+  const [resumeUploaded, setResumeUploaded] = React.useState(false);
+
+  const handleResumeUpload = () => {
+    setResumeUploaded(true);
+  };
+
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-purple-50 via-white to-blue-50">
-      <Header showNavLinks={false} />
-      <main className="flex-1 py-12 px-4">
-        <div className="container mx-auto max-w-2xl">
-          <Link href="/" className="inline-flex items-center text-purple-600 hover:text-purple-700 mb-6">
-            <ChevronLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Link>
-          <Card className="bg-white shadow-lg border-purple-100">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">Get Started with H1B Career Advisor</CardTitle>
-              <CardDescription>Please provide your information to receive personalized career advice.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <GetStartedForm />
-            </CardContent>
-          </Card>
-        </div>
-      </main>
-      <Footer />
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-6">Get Started</h1>
+      {!resumeUploaded ? (
+        <ResumeUpload onUploadSuccess={handleResumeUpload} />
+      ) : (
+        <GetStartedForm />
+      )}
     </div>
   );
-}
+};
+
+export default GetStartedPage;

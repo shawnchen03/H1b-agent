@@ -7,11 +7,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { GraduationCap, ChevronLeft, Send, Bell } from "lucide-react";
-import Link from "next/link";
+import { ChevronLeft, Send } from "lucide-react";
+import { useRouter } from 'next/navigation';
 
-export default function GetStartedPage() {
+export default function GetStartedForm() {
   const [step, setStep] = useState(1);
+  const router = useRouter();
+
+  const handleStartJourney = () => {
+    // Here you would typically submit the form data
+    // For now, we'll just navigate to the dashboard
+    router.push('/control-panel');
+  };
 
   const renderStep = () => {
     switch(step) {
@@ -80,7 +87,7 @@ export default function GetStartedPage() {
               <Button onClick={() => setStep(2)} variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50">
                 <ChevronLeft className="mr-2 h-4 w-4" /> Back
               </Button>
-              <Button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 transition-all duration-200">
+              <Button onClick={handleStartJourney} className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 transition-all duration-200">
                 Start My Career Journey <Send className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -90,55 +97,21 @@ export default function GetStartedPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-purple-50 via-white to-blue-50">
-      <header className="px-4 lg:px-6 h-16 flex items-center justify-between backdrop-blur-sm bg-white/30 border-b border-gray-200 sticky top-0 z-10">
-        <Link className="flex items-center justify-center" href="/">
-          <GraduationCap className="h-6 w-6 text-purple-600" />
-          <span className="ml-2 text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">H1B Career Advisor</span>
-        </Link>
-        <Button variant="ghost" size="icon">
-          <Bell className="h-5 w-5" />
-        </Button>
-      </header>
-      <main className="flex-1 py-12 px-4">
-        <div className="container mx-auto max-w-2xl">
-          <Link href="/" className="inline-flex items-center text-purple-600 hover:text-purple-700 mb-6">
-            <ChevronLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Link>
-          <Card className="bg-white shadow-lg border-purple-100">
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">Get Started with H1B Career Advisor</CardTitle>
-              <CardDescription>Please provide your information to receive personalized career advice.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="mb-6 flex justify-between">
-                {[1, 2, 3].map((i) => (
-                  <Badge key={i} variant={step >= i ? "default" : "outline"} className="w-20 justify-center">
-                    Step {i}
-                  </Badge>
-                ))}
-              </div>
-              {renderStep()}
-            </CardContent>
-          </Card>
+    <Card className="bg-white shadow-lg border-purple-100">
+      <CardHeader>
+        <CardTitle className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">Get Started with H1B Career Advisor</CardTitle>
+        <CardDescription>Please provide your information to receive personalized career advice.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="mb-6 flex justify-between">
+          {[1, 2, 3].map((i) => (
+            <Badge key={i} variant={step >= i ? "default" : "outline"} className="w-20 justify-center">
+              Step {i}
+            </Badge>
+          ))}
         </div>
-      </main>
-      <footer className="w-full py-6 bg-gradient-to-r from-purple-100 to-blue-100">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-gray-600">© 2024 H1B Career Advisor. All rights reserved.</p>
-            <nav className="flex gap-4 sm:gap-6">
-              <Link className="text-sm hover:underline underline-offset-4 text-gray-600 hover:text-purple-600 transition-colors" href="/terms">
-                Terms of Service
-              </Link>
-              <Link className="text-sm hover:underline underline-offset-4 text-gray-600 hover:text-purple-600 transition-colors" href="/privacy">
-                Privacy Policy
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </footer>
-    </div>
+        {renderStep()}
+      </CardContent>
+    </Card>
   );
 }
