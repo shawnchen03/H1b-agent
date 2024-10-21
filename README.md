@@ -13,10 +13,42 @@ project-root/
 ├── src/
 │   ├── app/
 │   │   ├── chatbot/
+│   │   │   └── page.tsx
 │   │   ├── control-panel/
-│   │   └── get-started/
+│   │   │   └── page.tsx
+│   │   ├── get-started/
+│   │   │   └── page.tsx
+│   │   ├── api/
+│   │   │   ├── chat/
+│   │   │   │   └── route.ts
+│   │   │   ├── check-upload/
+│   │   │   │   └── route.ts
+│   │   │   └── upload/
+│   │   │       └── route.ts
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
 │   ├── components/
-│   │   └── ui/
+│   │   ├── ui/
+│   │   │   ├── avatar.tsx
+│   │   │   ├── badge.tsx
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── input.tsx
+│   │   │   ├── progress.tsx
+│   │   │   ├── scroll-area.tsx
+│   │   │   ├── select.tsx
+│   │   │   ├── switch.tsx
+│   │   │   ├── tabs.tsx
+│   │   │   ├── textarea.tsx
+│   │   │   └── tooltip.tsx
+│   │   ├── ChatInterface.tsx
+│   │   ├── FeatureCard.tsx
+│   │   ├── Footer.tsx
+│   │   ├── GetStartedForm.tsx
+│   │   ├── Header.tsx
+│   │   ├── HowItWorksStep.tsx
+│   │   └── resume-upload.tsx
 │   ├── lib/
 │   ├── pages/
 │   │   └── api/
