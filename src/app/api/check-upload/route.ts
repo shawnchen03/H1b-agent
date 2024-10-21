@@ -17,8 +17,11 @@ export async function GET(req: Request) {
 
     const queryResponse = await index.fetch([fileName]);
 
-    if (queryResponse.vectors && queryResponse.vectors[fileName]) {
-      return NextResponse.json({ exists: true, vector: queryResponse.vectors[fileName].values });
+    if (queryResponse.records && queryResponse.records[fileName]) {
+      return NextResponse.json({ 
+        exists: true, 
+        vector: queryResponse.records[fileName].values 
+      });
     } else {
       return NextResponse.json({ exists: false });
     }
