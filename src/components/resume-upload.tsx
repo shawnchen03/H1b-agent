@@ -117,11 +117,11 @@ const ResumeUpload: React.FC<ResumeUploadProps> = ({ onUploadSuccess }) => {
                 />
               </div>
               <Button variant="outline" className="w-full justify-start">
-                <Image src="/placeholder.svg?height=24&width=24" alt="Dropbox logo" width={24} height={24} className="mr-2" />
+                <Image src="/dropbox-icon.png" alt="Dropbox logo" width={24} height={24} className="mr-2" />
                 Dropbox
               </Button>
               <Button variant="outline" className="w-full justify-start">
-                <Image src="/placeholder.svg?height=24&width=24" alt="Google Drive logo" width={24} height={24} className="mr-2" />
+                <Image src="/google-drive-icon.png" alt="Google Drive logo" width={24} height={24} className="mr-2" />
                 Google Drive
               </Button>
               <Button variant="outline" className="w-full justify-start">
