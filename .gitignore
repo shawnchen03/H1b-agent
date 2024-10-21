@@ -1,5 +1,6 @@
 # ... other entries ...
 .env.local
 package-lock.zip
-#ignore node_modules folder
+#ignore folders
 node_modules/
+.next/
